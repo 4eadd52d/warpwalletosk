@@ -15,11 +15,31 @@ h1 {
   font-weight:bold;
   text-align: center;
   margin-top:50px;
-  margin-bottom:30px;
+  margin-bottom:10px;
 }
 h1 .second-half {
   color:#fff;
   font-style: italic;
+}
+h1 .suffix {
+  font-size:50px;
+  color:#eee;
+  text-shadow: -1px 0 #888, 0 1px #888, 1px 0 #888, 0 -1px #888;
+}
+h3 {
+  font-size:2em;
+  color:#eee;
+  text-align: center;
+  margin-top:0px;
+  margin-bottom:30px;
+}
+h3 .second-half {
+  color:#fff;
+  font-style: italic;
+}
+h3 .suffix {
+  font-size:25px;
+  font-weight:normal;
 }
 .form-container {
   border: 2px solid #bbb;

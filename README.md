@@ -1,3 +1,13 @@
+# WarpWallet OSK
+
+WarpWallet OSK is a slightly modified version of WarpWallet, which is developed by keybase. OSK stands for On-Screen Keyboard. WarpWallet OSK adds an on-screen keyboard (and that only) to the original WarpWallet in order to increase the security against keyloggers.
+
+The official WarpWallet sites are:
+https://github.com/keybase/warpwallet
+https://keybase.io/warp/
+
+The following part of this file is the same as the official version.
+
 # warpwallet
 
 A brain wallet generator that uses scrypt.

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>WarpWallet - deterministic bitcoin wallet generator</title>
+  <title>WarpWallet OSK - deterministic bitcoin wallet generator with on-screen keyboard</title>
   <meta charset="utf-8">
 </head>
 
@@ -113,7 +113,8 @@ window.package = {::package.json::};
 
   <div class="row">
     <div class="col-md-12">
-      <h1>Warp<span class="second-half">Wallet</span></h1>
+      <h1>Warp<span class="second-half">Wallet</span><span class="suffix"> OSK</span></h1>
+	  <!-- <h3>Warp<span class="second-half">Wallet</span><span class="suffix"> with on-screen keyboard</span></h3> -->
       <form class="form-horizontal form-container" role="form">
         <div class="form-group">
           <label for="passphrase" class="col-md-4 control-label">Passphrase</label>
@@ -191,173 +192,21 @@ window.package = {::package.json::};
 
   <div class="container">
     <div class="row sub-row">
-      <div class="col col-md-4">
+      <div class="col col-md-3">
+      </div>
+      <div class="col col-md-6">
+        <h4>What is WarpWallet OSK?</h4>
+        <p>
+          WarpWallet OSK is a slightly modified version of WarpWallet. OSK stands for On-Screen Keyboard. WarpWallet OSK adds an on-screen keyboard (and that only) to the original WarpWallet in order to increase the security against keyloggers.
+        </p>
         <h4>What is WarpWallet?</h4>
         <p>
-          WarpWallet is a deterministic bitcoin address generator. You never have to save
-          or store your private key anywhere. Just pick a really good password - many random words, for example - and never use it
-          for anything else.
+          WarpWallet is a deterministic bitcoin address generator developed by <a href="https://keybase.io/">keybase</a>. The official WarpWallet sites are: <a href="https://github.com/keybase/warpwallet"><u>GitHub</u></a> <a href="https://keybase.io/warp/"><u>keybase</u></a>
         </p>
-        <p>
-          This page is self-contained for portability. Save it on your computer - all the JS, CSS, and images are embedded. It's also <a href="https://github.com/keybase/warpwallet">hosted on github</a>.
-        </p>
-        <p>
-          This is not an original idea. <a href="https://www.bitaddress.org/">bitaddress.org's brainwallet</a>
-          is our inspiration.
-        </p>
-        <p>
-          WarpWallet adds two improvements: (1) WarpWallet uses <a href="http://www.tarsnap.com/scrypt.html">scrypt</a> to make address generation both memory and time-intensive. And (2) you can "salt" your passphrase with your email address.  Though salting is optional, we recommend it.  Any attacker of WarpWallet addresses would have to target you individually, rather than netting you in a wider, generic sweep.  And your email is trivial to remember, so why not?
-        </p>
-        <p>
-          For safety, we've implemented WarpWallet outside of JavaScript and confirmed it generates the same output. (It's a step in our test suite, and we publish our <a href="https://github.com/keybase/warpwallet/blob/master/test/spec.json">test vectors</a> along with the source.) If you're a programmer and want to implement WarpWallet yourself...
-        </p>
-
-        <table class="table table-condensed" style="font-size:1.0em;">
-          <tr><td valign="top" align="right">s<sub>1</sub></td>     <td valign="top">=</td><td valign="top" align="left">scrypt(key=(passphrase||<tt>0x1</tt>), salt=(salt||<tt>0x1</tt>), N=2<sup>18</sup>, r=8, p=1, dkLen=32)</td></tr>
-          <tr><td valign="top" align="right">s<sub>2</sub></td>     <td valign="top">=</td><td valign="top" align="left">pbkdf2(key=(passphrase||<tt>0x2</tt>), salt=(salt||<tt>0x2</tt>), c=2<sup>16</sup>, dkLen=32, prf=HMAC_SHA256)</td></tr>
-          <tr><td valign="top" align="right">keypair</td><td valign="top">=</td><td valign="top" align="left">generate_bitcoin_keypair(s<sub>1</sub> &oplus; s<sub>2</sub>)</td></tr>
-        </table>
-
+	  </div>
+      <div class="col col-md-3">
       </div>
-      <div class="col col-md-4">
-        <h4>WarpWallet Challenge</h4>
-        <p>
-          The following challenges are designed to test the safety of WarpWallet, and scrypt in general.
-          We expect the first 4 to fall quickly and hope to lose our bitcoins
-          to nice people.  If challenge 5 falls, we'll make an announcement
-          here and on twitter (<a href="https://twitter.com/maxtaco">@maxtaco</a>, <a href="https://twitter.com/malgorithms">@malgorithms</a>).
-        </p>
-        <p>
-          All these challenges are with unsalted passphrases. Salt yours! They're harder to lick.
-        </p>
-
-        <div class="challenge">
-
-          <h5>Challenge 1</h5>
-          <ul>
-            <li><b>reward</b>: <span class="reward-amount-solved">0.1 BTC</span></li>
-            <li>
-              <b>hint</b>: this passphrase is 2 random alphanumeric characters, such as 'X9'.
-            </li>
-            <li><b>wallet</b>: <a class="wallet-link" href="https://blockchain.info/address/1JKb1617p68H5MPkoNaMtaJCqKDU3h8qSn" target="_new">1JKb1617p68H5MPkoNaMtaJCqKDU3h8qSn</a></li>
-            <li><b>status</b>: <span class="solved">solved</span></li>
-            <li><b>expires</b>: never</li>
-          </ul>
-        </div>
-
-
-        <div class="challenge">
-          <h5>Challenge 2</h5>
-          <ul>
-            <li><b>reward</b>: <span class="reward-amount-solved">0.25 BTC</span></li>
-            <li>
-              <b>hint</b>: this passphrase is 3 random alphanumeric characters, such as 'Xa2'.
-            </li>
-            <li><b>wallet</b>: <a class="wallet-link" href="https://blockchain.info/address/1NMjXhB2DW8pbGvd64o9DiqwCF8BTAkJKu" target="_new">1NMjXhB2DW8pbGvd64o9DiqwCF8BTAkJKu</a></li>
-            <li><b>status</b>: <span class="solved">solved</span></li>
-            <li><b>expires</b>: never</li>
-          </ul>
-        </div>
-
-        <div class="challenge">
-          <h5>Challenge 3</h5>
-          <ul>
-            <li><b>reward</b>: <span class="reward-amount-solved">0.5 BTC</span></li>
-            <li>
-              <b>hint</b>: this passphrase is the usernames of two who've posted on the <a href="http://www.reddit.com/r/Bitcoin">Bitcoin subreddit</a>, separated by a space.
-            </li>
-            <li><b>wallet</b>: <a class="wallet-link" href="https://blockchain.info/address/1FpxSs3tsvV8knTgRv2885bE1GyPq1QrvH" target="_new">1FpxSs3tsvV8knTgRv2885bE1GyPq1QrvH</a></li>
-            <li><b>status</b>: <span class="solved">solved</span> [<a href="http://www.reddit.com/r/Bitcoin/comments/1rla6w/after_8_days_of_bruteforcing_the_rbitcoin/">link</a>]</li>
-            <li><b>expires</b>: January 1, 2015</li>
-          </ul>
-        </div>
-
-
-        <div class="challenge">
-          <h5>Challenge 4</h5>
-          <ul>
-            <li><b>reward</b>: <span class="reward-amount-solved">1.0 BTC</span></li>
-            <li>
-              <b>hint</b>: This passphrase is the username of someone in the Hacker News top 100 karma
-              list <a href="https://keybase.io/warp/hacker_news_100.txt">as of November 19, 2013</a>.  However, we dropped 2 characters from his or her username.
-            </li>
-            <li><b>wallet</b>: <a class="wallet-link" href="https://blockchain.info/address/1GXXH7FbY7nCJDRc72SMyYykgtEUi5GxfR" target="_new">1GXXH7FbY7nCJDRc72SMyYykgtEUi5GxfR</a></li>
-            <li><b>status</b>: <span class="solved">solved</span> [<a href="https://news.ycombinator.com/item?id=6765801">link</a>]</li>
-            <li><b>expires</b>: January 1, 2015</li>
-          </ul>
-        </div>
-
-        <p>
-          And finally, the real challenge...
-        </p>
-
-        <div class="challenge">
-          <h5>The WarpWallet Challenge 1</h5>
-          <ul>
-            <li><b>reward</b>: <span class="reward-amount">20.0 BTC*</span></li>
-            <li>
-              <b>the answer was</b>: 'PuACRv0R'
-            </li>
-            <li><b>wallet</b>: <a class="wallet-link" href="https://blockchain.info/address/1AdU3EcimMFN7JLJtceSyrmFYE3gF5ZnGj" target="_new">1AdU3EcimMFN7JLJtceSyrmFYE3gF5ZnGj</a></li>
-            <li><b>status</b>: <span class="solved">Expired/unsolved</span></li>
-            <li><b>expired on</b>: Feb 1, 2016. Come on, guys!</li>
-            </ul>
-            </div>
-
-        <div class="challenge">
-          <h5>The WarpWallet Challenge 2</h5>
-          <ul>
-            <li><b>reward</b>: <span class="reward-amount">20.0 BTC*</span></li>
-            <li>
-              <b>hint</b>: this passphrase is 8 characters long, only alphanumerics. For example, 'b234FEzz'. the salt is <tt>a@b.c</tt>
-            </li>
-            <li><b>wallet</b>: <a class="wallet-link" href="https://blockchain.info/address/1MkupVKiCik9iyfnLrJoZLx9RH4rkF3hnA" target="_new">1MkupVKiCik9iyfnLrJoZLx9RH4rkF3hnA</a></li>
-            <li><b>status</b>: <span class="unbroken">Unsolved</span></li>
-            <li><b>expires on</b>: Jan 1, 2018</li>
-            <li><b>note</b>: * we put half the prize in the private wallet, and expect to hear from the winner privately, so we can talk
-              about his/her technique. The other half we will send privately.</li>
-          </ul>
-        </div>
-      </div>
-
-
-      <div class="col col-md-4">
-        <h4>Authors</h4>
-        <p>
-          We are <a href="https://twitter.com/maxtaco">Max Krohn</a> and
-          <a href="https://twitter.com/malgorithms">Chris Coyne</a>, co-founders
-          of OkCupid, SparkNotes, and a bunch of other toys. Good day to you! We recently left OkCupid after 9 years, so we
-          have a lot of time on our hands. Please follow us on twitter if you care to hear about this kind of thing.
-        </p>
-        <p>
-          But enough with the pleasantries: you can always see our signed version history at <a href="https://keybase.io/warp/release.txt">https://keybase.io/warp/release.txt</a> (signed with
-          our <a href="https://keybase.io/warp/keybase-code-signing-key-2013.asc">PGP key</a>).
-        </p>
-        <p>
-          <i>WarpWallet</i> is of course offered without any warranty of any kind;
-          if you lose your bitcoins due to a bug in our software, your keystrokes being
-          recorded on a malware-infested XP rig from 2003, a weak passphrase, or even a typo,
-          we are sorry in the most respectful way, but we cannot help you. Of course if you're messing around with bitcoins, you
-          know how dangerous it is.
-        </p>
-        <p>
-          Consider using an air-gapped computer when generating bitcoin addresses. The nice thing about WarpWallet is you don't have to worry
-          about concealing your private key afterwards. Just don't forget your password.
-        </p>
-
-      </div><!-- /footer column -->
     </div>
-    <hr>
-    <br /><br /><br />
-    <div style="text-align:center;">
-      <img src={::src/img/rocket.png::}>
-      <br /><br />
-      <script>document.write(package.version)</script> - CrashMix 2013<br />
-      <a href="https://keybase.io/warp/keybase-code-signing-key-2013.asc">PGP Key
-        (222B 85B0 F90B E2D2 4CFE  B93F 4748 4E50 656D 16C7)</a><br />
-      <a href="https://keybase.io/warp/release.txt">Signed Version History</a> &nbsp; &nbsp;
-    </div>
-    <br /><br /><br />
   </div><!-- /container -->
 
 </div><!-- /footer -->
